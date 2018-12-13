@@ -49,23 +49,11 @@ export class DataService {
     });
   }
 
-  getUnmunch(){
-
-    var ret = [
-      { root: "happy",
-        slots : ["happier", "happiest"],
-        score : 80
-      },
-      {
-        root: "happie",
-        slots : ["happier", "happiest"],
-        score : 50
-      }
-    ]
-
-    return ret
-    
-  }
+  getUnmunch(words_list: string[]){
+    return this.http.post(`http://${this.baseUrl}:5000/unmunch-word-list`, {
+      words: words_list
+    });
+  }   
 
   addLanguage(language_name: string) {
     return this.http.post(`http://${this.baseUrl}:5000/add-language`, {
